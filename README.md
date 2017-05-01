@@ -41,6 +41,7 @@ To execute a connection in [mobaXterm](https://drive.google.com/open?id=0B496SaF
 ## Step 4: Install Libraries and Packages
 #### PIGPIO library install
 ```
+cd ~
 sudo apt-get update
 sudo apt-get upgrade
 rm pigpio.zip
@@ -58,6 +59,7 @@ Unzip and pasted into the folder where main script will be written.
 
 #### PHP5 install
 ```
+cd ~
 sudo apt-get insall php5
 ```
 
