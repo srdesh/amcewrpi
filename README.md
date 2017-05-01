@@ -20,7 +20,7 @@ We have installed Raspbian OS to run on Raspberry Pi . First extract the OS file
 ## Step 2: Connect Raspbery Pi to PC
 Raspberry Pi is now configured and booted up and we should be able to connect it via mobaXterm software from our PC now. Before that we need to make our internet connect to allow sharing. 
 #### For windows click: Network and sharing center >  Network connections > Wifi/Ethernet > Properties > Sharing > Allow both option and click OK.
-To execute a connection in [mobaXterm](https://drive.google.com/open?id=0B496SaFqKMZCa01PdHZsT09pMWs), hostname or IP is required in order to connect to Raspberry PI. To obtain the Raspberry Pi's IP address we used [ipscan24](https://drive.google.com/open?id=0B496SaFqKMZCdGRRdTBoZFRkQVE) software. Then need to write on mobaXterm commandline “startlxde” to display raspberry pi.
+To execute a connection in [mobaXterm](https://drive.google.com/open?id=0B496SaFqKMZCa01PdHZsT09pMWs), hostname or IP is required in order to connect to Raspberry PI. To obtain the Raspberry Pi's IP address we used [ipscan24](https://drive.google.com/open?id=0B496SaFqKMZCdGRRdTBoZFRkQVE) software. Create a new session and put the hostname or IP that you have got for Raspberrypi. Login as "root" user and provide your password (by default it's 'raspberrypi'). Then need to write on mobaXterm commandline “startlxde” to display raspberry pi.
 
 ## Step 3: Connecting DHT-22
 * Make sure Raspberry Pi power is switched off.
@@ -65,7 +65,7 @@ sudo apt-get insall php5
 ```
 sudo apt-get install mysql-server
 ```
-Note: set password for mysql
+Note: set password: root 
 
 #### PyMySQL install
 ```
@@ -76,7 +76,7 @@ sudo apt-get install pymysql
 ```
 sudo apt-get install phpmyadmin
 ```
-Note: set password for phpmyadmin and choose webserver “apache”
+Note: set password: root and choose webserver “apache”
 
 #### Apache2 server install
 ```
@@ -88,3 +88,26 @@ At the bottom write “Include /etc/phpmyadmin/apache.conf”. Save and Exit by 
 sudo /etc/init.d/apache2 restart
 hostname -I (to get apache server IP)
 ```
+
+#### Execute Script
+Copy and paste "Project" folder to 
+```
+Directory: /var/www/html
+```
+* Open browser and go to "apache2 server IP/phpmyadmin" or "localhost/phpmyadmin"
+* Login to your phpmyadmin as user: root and pass: root
+* create a new database called "myDB"
+* create two new table called as "myTable" and "currentTable"
+* "myTable" contains 5 rows serially such as "date", "time", "humi", "temp", "status"
+* "currentTable" contains 2 rows serially such as "cdate", "ctime"
+
+Now open terminal and write
+```
+cd ~
+cd PIGPIO
+make install
+sudo pigpiod
+cd /var/www/html/project
+sudo python myscript.py
+```
+Humidity and temperature will start appearing on your terminal. Now open your browser and type your "apache2 server IP/project" on URL and hit enter. Data will start showing on webpage. 
