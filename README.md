@@ -113,3 +113,4 @@ cd /var/www/html/project
 sudo python myscript.py
 ```
 Humidity and temperature will start appearing on your terminal. Now open your browser and type your "apache2 server IP/project" on URL and hit enter. Data will start showing on webpage. 
+#### For more details with images, checkout the PDF file given above. Enjoy!
